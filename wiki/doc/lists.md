@@ -18,7 +18,7 @@
 ```
 >则newList中的元素为[1, 2, 3, 4, 5, 6, 7]
 ## 常用方法操作
->添加元素(末尾):list.append()<br/>
+>添加元素(末尾):list.append(),此方法比“+”效率要高<br/>
 >添加元素(指定位置):list.insert(index, data)<br/>
 >获取list中元素个数:len(list)<br/>
 >创建一个list:list(object),从一个可迭代的对象创建一个list<br/>
