@@ -18,13 +18,15 @@
 ```
 >则newList中的元素为[1, 2, 3, 4, 5, 6, 7]
 ## 常用方法操作
->添加元素:list.append()<br/>
+>添加元素(末尾):list.append()<br/>
+>添加元素(指定位置):list.insert(index, data)<br/>
 >获取list中元素个数:len(list)<br/>
+>创建一个list:list(object),从一个可迭代的对象创建一个list<br/>
 ## 修改list中元素
-1. `lists[start:end] = [...]` 将指定位置的元素替换
-1. `lists[start:end] = []` 将指定位置的元素清空
-1. `lists[:] = []` 清空lists
-1. `lists[index] = x` 修改指定索引处的元素 
+>*. `lists[start:end] = [...]` 将指定位置的元素替换<br/>
+>*. `lists[start:end] = []` 将指定位置的元素清空<br/>
+>*. `lists[:] = []` 清空lists<br/>
+>*. `lists[index] = x` 修改指定索引处的元素 
 
 
 
