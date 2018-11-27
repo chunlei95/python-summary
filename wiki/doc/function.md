@@ -38,3 +38,58 @@
 >* 非关键字参数不能在关键字参数后面，例如，如下调用方式是错误的:<br/>
 `parrot(voltage=5.0, 'dead')  # non-keyword argument after a keyword argument`<br/>
 >* 如果使用了关键字参数，则参数传递的顺序就不重要了
+## <strong>**kwargs</strong>形式的参数
+>也叫关键字参数，函数调用时，该参数需要使用关键字的形式传递
+>如果在定义函数的时候定义了`**kwargs`形式的参数，则表示该参数接受一个字典(dict)类型,dict类型类似与java中的Map,<br/>
+>在传递该参数时，可以传递任意key/value对(多个使用逗号隔开，"="前后不要有空格)，但是key不能同函数定义时其他参数的<br/>
+名称相同
+## <strong>*args</strong>(定义任意参数列表)
+>* `*args`表示定义了一个可变参数列表
+>* 通常情况下，可变参数列表的定义要在函数参数列表的最后一个定义，但是有一种例外情况就是若存在`**kwargs`形式的参数<br/>
+则`*args`需要在`**kwargs`前面定义 
+## 解压缩参数列表
+>在给可变参数列表传递参数时，如果要传递的参数已经在一个列表或者序列中定义好了，则在传递的时候需要加上"*"符号，具体如下:
+```markdown
+        def add(a, *args):
+            """定义了一个可变参数列表*args"""
+            if len(args) > 0:
+                a = a + arg
+            return a
+            
+            
+        lists = [1, 2, 3, 4]  # 定义一个列表，列表中元素就是要传递给上面定义的方法中*args参数的
+        print(add(0, lists))  # 如果这样传递lists，程序将会报错
+        print(add(0, *lists))  # 正确的传递lists的形式应该时这样
+```
+>在给关键字参数(**kwargs)传递参数时，情况同`*args`形式，例如：
+```markdown
+        def append(a, **kwargs):
+            """定义了一个关键字参数**kwargs"""
+            if len(kwargs) > 0:
+                for arg in kwargs:
+                    a = a + arg
+            return a
+            
+         
+        s = {"b": "b", "c": "c", "d": "d"}  # 定义一个dict，里面的元素就是要传递给上面定义的方法中**kwargs参数的
+        print(append("a", s))  # 错误的传递方式
+        print(append("a", **s))  # 正确的传递方式
+```
+## lambda表达式
+>* 可以使用lambda关键字创建小的匿名函数
+>* 另一个用途是传递一个小函数作为参数
+>* Lambda函数可以在需要函数对象的任何地方使用
+>* 它们在语法上限于单个表达式
+
+>举例说明：
+```markdown
+        def lambda_test(a):
+            """定义一个函数，该函数返回一个(lambda)函数"""
+            return lambda b: b + a  # 返回一个函数，该函数的参数为b, 函数体为 `return b + a`,其中，
+        # 在返回时，a已经被确定了，因为在调用lambda_test函数时，a必须会被指定
+
+
+        f = lambda_test(10)  # 此时，f就代表一个函数，函数体为 `return b + 10`
+        print(f(1))  # 结果为11
+        print(f(10))  # 结果为20
+```
